@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@500&family=Markazi+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>FUTSAL PON XX</title>
+</head>
+
+<body id="top"style="font-family: 'Century Gothic', cursive;background-image: url(maskot.png); background-size: 25%; background-repeat: no-repeat; background-position: right;">
+    <nav class="navbar navbar-dark navbar-expand-sm sticky-top" style="background-color: rgb(23, 29, 90);">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand mr-auto" href="index.html">
+                Futsal PON XX
+            </a>
+            <div class="collapse navbar-collapse" id="navbar">
+                <!-- yang besar -->
+                <input placeholder="Search..." type="text" id="search" class=" ml-auto form-control form-control-sm d-none d-sm-block" style="width: 65%"> 
+                <input type="button" value="Go" onclick="search(document.getElementById('search').value)" class="btn btn-outline-light btn-sm d-none d-sm-block">
+                
+                <!-- yang kecil -->
+                <input placeholder="Search..." type="text" id="cari"  class="mr-auto ml-auto form-control form-control-sm d-block d-sm-none" style="width: 60%;">
+                <input type="button" value="Go" onclick="cari(document.getElementById('cari').value)" class="mr-auto ml-auto btn btn-outline-light btn-sm d-block d-sm-none">       
+                
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#grup">Hasil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#medali">Medali</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#topskor">Top Skor</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="hubungi" class="modal fade">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hubungi Kami</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" onSubmit="validation()">
+                        <div class="form-row">
+                            <label class="col-md-2 col-form-label">Email</label>
+                            <div class="col-md">
+                                <input type="Email" class="form-control form-control-sm" id="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            
+                            <label class="col-md-2 col-form-label">Nama</label>
+                            <div class="col-md">
+                                <input type="text" class="form-control form-control-sm" id="nama" placeholder="Nama">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="feedback" class="col-md-2 col-form-label">Komentar</label>
+                            <div class="col-md">
+                                <textarea class="form-control form-control-sm" id="komentar" name="feedback" rows="12"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="button" class="btn btn-secondary btn-sm col-sm-1 ml-auto" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary btn-sm col-sm-1 ml-1">Kirim</button>                
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tentang" class="modal fade">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tentang Kami</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: justify;">
+                    <p>Kami adalah mahasiswa UKRIDA jurusan Informatika yang sedang berusaha menyelesaikan studi S1 dengan tepat waktu. Kelompok kami terdiri dari 3 orang yaitu Diana, Gerald, dan Reynaldo. Kami akan berusaha untuk menggapai mimpi kami.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="jumbotron">
+        <div class="container"data-aos="zoom-out"  data-aos-easing="ease-in-back" data-aos-offset="0"data-aos-delay="500" data-aos-duration="1000">
+            <div class="row row-header mt-5">
+                <div class="col-sm"></div>
+                <div class="col-12 col-sm-8" style="text-align: center; color:rgb(23, 29, 90);">
+                    <img src="logo.png" width="350" height="420">
+                    <h1 class="mt-5">FUTSAL PON XX</h1>
+                    <P>Website khusus cabang olahraga Futsal pada PON XX Papua.</P>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+        </div>
+    </header>
+    <div class="container"> 
+        <div class="row">            
+            <div class="col-12 col-sm-3" data-aos="fade-right">
+                <div class="list-group sticky-top d-none d-md-block">
+                    <span class="mb-5"><br><br><br></span>
+                        <a class="list-group-item list-group-item-action">
+                         <b> Babak</b>
+                        </a>
+                        <a href="#grup" class="list-group-item list-group-item-action">Penyisihan Grup</a>
+                        <a href="#semis" class="list-group-item list-group-item-action">Semi-Final</a>
+                        <a href="#3rd" class="list-group-item list-group-item-action">Perebutan Medali Perunggu</a>
+                        <a href="#final" class="list-group-item list-group-item-action">Final</a>
+                        <a href="#juara" class="list-group-item list-group-item-action">Juara</a>
+                    </div>
+                <!-- <div class="card sticky-top d-none d-sm-block" style="width:200;">
+                    <div class="card-header">
+                      
+                    </div>
+                    
+
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><a class="nav-link" href="" id="lcard"></a></li>
+                      <li class="list-group-item"id="lcard"><a class="list-group-item list-group-item-action" href="#semis"id="lcard"></a></li>
+                      <li class="list-group-item"id="lcard"><a class="nav-link"  href="#3rd"id="lcard"></a></li>
+                      <li class="list-group-item"id="lcard"><a class="nav-link"  href="#final"id="lcard"></a></li>
+                      <li class="list-group-item"id="lcard"><a class="nav-link"  href="#juara"id="lcard"></a></li>
+                    </ul>
+                  </div> -->
+            </div>
+
+            <div class="col-12 col-sm-8 ml-2">
+                <span class="anchor" id="grup"></span>
+                <h2 id="grup" data-aos="fade-up">Hasil Pertandingan</h2>
+                <h4 class="col-12 mb-3 mt-3" data-aos="fade-up"><b>Penyisihan Grup</b></h4>
+                <div class="table-responsive"data-aos="fade-left" style="text-align: center;">
+                    <table class="table table-borderless">
+                        <thead class="thead-borderless">
+                            <tr>
+                                <th>Home</th>
+                                <th></th>
+                                <th>Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="img/papua.png" width="20" height="25"> Papua</td>
+                                <td>2-1</td>
+                                <td>Sumatera Utara <img src="img/SumateraUtara.png" width="20" height="25"> </td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/JawaBarat.png" width="20" height="25"> Jawa Barat</td>
+                                <td>4-2</td>
+                                <td>Banten <img src="img/Banten.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/Riau.png" width="20" height="25"> Kep. Riau</td>
+                                <td>1-9</td>
+                                <td>NTB <img src="img/ntb.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/SulawesiSelatan.png" width="20" height="25"> Sulawesi Selatan </td>
+                                <td>4-1</td>
+                                <td>Maluku Utara <img src="img/MalukuUtara.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/JawaTimur.png" width="20" height="25"> Jawa Timur</td>
+                                <td>3-3</td>
+                                <td>Sulawesi Selatan <img src="img/SulawesiSelatan.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/KalimantanBarat.png" width="20" height="25"> Kalimantan Barat</td>
+                                <td>10-4</td>
+                                <td>Kep. Riau <img src="img/Riau.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/MalukuUtara.png" width="20" height="25"> Maluku Utara</td>
+                                <td>0-6</td>
+                                <td>Jawa Barat <img src="img/JawaBarat.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/ntb.png" width="20" height="25"> NTB</td>
+                                <td>2-3</td>
+                                <td>Papua <img src="img/Papua.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/SumateraUtara.png" width="20" height="25"> Sumatera Utara</td>
+                                <td>4-2</td>
+                                <td>Kalimantan Barat <img src="img/KalimantanBarat.png" width="20" height="25"> </td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/Banten.png" width="20" height="25"> Banten</td>
+                                <td>1-1</td>
+                                <td>Jawa Timur <img src="img/JawaTimur.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/Riau.png" width="20" height="25"> Kep. Riau</td>
+                                <td>3-6</td>
+                                <td>Papua <img src="img/Papua.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/SulawesiSelatan.png" width="20" height="25"> Sulawesi Selatan </td>
+                                <td>1-3</td>
+                                <td>Jawa Barat <img src="img/JawaBarat.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/JawaTimur.png" width="20" height="25"> Jawa Timur</td>
+                                <td>4-2</td>
+                                <td>Maluku Utara <img src="img/MalukuUtara.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/KalimantanBarat.png" width="20" height="25"> Kalimantan Barat</td>
+                                <td>2-4</td>
+                                <td>NTB <img src="img/ntb.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/Banten.png" width="20" height="25"> Banten</td>
+                                <td>2-5</td>
+                                <td>Sulawesi Selatan <img src="img/SulawesiSelatan.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/SumateraUtara.png" width="20" height="25"> Sumatera Utara</td>
+                                <td>4-6</td>
+                                <td>Kep. Riau <img src="img/Riau.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/ntb.png" width="20" height="25"> NTB</td>
+                                <td>4-0</td>
+                                <td>Sumatera Utara <img src="img/SumateraUtara.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/JawaBarat.png" width="20" height="25"> Jawa Barat</td>
+                                <td>3-4</td>
+                                <td>Jawa Timur <img src="img/JawaTimur.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/papua.png" width="20" height="25"> Papua</td>
+                                <td>3-2</td>
+                                <td>Kalimantan Barat <img src="img/KalimantanBarat.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/MalukuUtara.png" width="20" height="25"> Maluku Utara</td>
+                                <td>4-5</td>
+                                <td>Banten <img src="img/Banten.png" width="20" height="25"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <span class="anchor" id="semis"></span>
+
+                <h4 class="col-12 mb-3 mt-3" data-aos="fade-down"><b>Semi-Final</b></h4>
+                <div class="table-responsive" style="text-align: center;" data-aos="fade-left">
+                    <table class="table table-borderless">
+                        <thead class="thead-borderless">
+                            <tr>
+                                <th>Home</th>
+                                <th></th>
+                                <th>Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="img/papua.png" width="20" height="25"> Papua</td>
+                                <td>5-1</td>
+                                <td>Jawa Timur <img src="img/JawaTimur.png" width="20" height="25"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/JawaBarat.png" width="20" height="25"> Jawa Barat</td>
+                                <td>1-0</td>
+                                <td>NTB <img src="img/ntb.png" width="20" height="25"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <span class="anchor" id="3rd"></span>
+
+                <h4 class="col-12 mb-3 mt-3" data-aos="fade-up"><b>Perebutan Medali Perunggu</b></h4>
+                <div class="table-responsive" style="text-align: center;" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                    <table class="table table-borderless">
+                        <thead class="thead-borderless">
+                            <tr>
+                                <th>Home</th>
+                                <th></th>
+                                <th>Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="316.55"><img src="img/JawaTimur.png" width="20" height="25"> Jawa Timur</td>
+                                <td width="96.88">5-1</td>
+                                <td width="316.58">NTB <img src="img/ntb.png" width="20" height="25"></td>
+                            </tr>                     
+                        </tbody>
+                    </table>
+                </div>
+
+                <span class="anchor" id="final"></span>
+
+                <h4 class="col-12 mb-3 mt-3" data-aos="fade-up"><b>Final</b></h4>
+                <div class="table-responsive" style="text-align: center;" data-aos="fade-up">
+                    <table class="table table-borderless">
+                        <thead class="thead-borderless">
+                            <tr>
+                                <th>Home</th>
+                                <th></th>
+                                <th>Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="316.55"><img src="img/papua.png" width="20" height="25"> Papua</td>
+                                <td width="96.88">4-2</td>
+                                <td width="316.58">Jawa Barat <img src="img/JawaBarat.png" width="20" height="25"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <span class="anchor" id="juara"></span>
+
+                <h4 class="col-12 mb-3 mt-3" data-aos="zoom-in"  data-aos-easing="ease-in-back" data-aos-offset="0"data-aos-delay="500" data-aos-duration="500"><b>Juara</b></h4>
+                <h1 class="text-center" data-aos="zoom-in"  data-aos-easing="ease-in-back" data-aos-offset="0"data-aos-delay="500" data-aos-duration="500"><img src="img/papua.png" width="30" height="45"> <b>Papua</b> <img src="img/gold.png" width="30" height="45"></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron mt-5">
+        <div class="container" style="color: rgb(23, 29, 90);">
+            <div class="row">
+                <span class="anchor" id="medali"></span>
+                <h2 class="col-12 mb-5 mt-5" data-aos="fade-up">Perolehan Medali</h2>
+                <div class="table-responsive mb-5"data-aos="fade-up">
+                    <table class="table" style="color: rgb(23, 29, 90);">
+                        <thead class="thead-dark" style="text-align: Center;">
+                            <tr>
+                                <th>Tim</th>
+                                <th>Emas</th>
+                                <th>Perak</th>
+                                <th>Perunggu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th><img src="img/papua.png"width="20" height="25"> Papua</th>
+                                <td id="TableMedali"><img src="medals/gold.png"width="20" height="35"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th><img src="img/JawaBarat.png"width="20" height="25"> Jawa Barat</th>
+                                <td></td>
+                                <td id="TableMedali"><img src="medals/silver.png"width="20" height="35"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th><img src="img/JawaTimur.png"width="20" height="25"> Jawa Timur</th>
+                                <td></td>
+                                <td></td>
+                                <td id="TableMedali"><img src="medals/bronze.png"width="20" height="35"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" data-aos="fade-up">
+            <span class="anchor" id="topskor"></span>
+            <h2 class="col-12 mb-3 mt-5">Top Skor</h2>
+            <div class="col-4 ml-auto mr-auto mb-5">
+                <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="Topskor/SamuelEko.jpg" alt="SamuelEko">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Samuel Eko Putra</h2>
+                                <p class="d-none d-sm-block">7 Gol</p>
+                            </div>
+                            <div class="carousel-caption d-md-none d-block">
+                                <p>Samuel Eko Putra: 7 Gol</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="Topskor/Wahyu.jpg" alt="Wahyu">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Wahyu Setiawan</h2>
+                                <p class="d-none d-sm-block">6 Gol</p>
+                            </div>
+                            <div class="carousel-caption d-md-none d-block">
+                                <p>Wahyu Setiawan: 6 Gol</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="Topskor/Armia.jpg" alt="Armia">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Armia Zainul Almaraghi</h2>
+                                <p class="d-none d-sm-block">6 Gol</p>
+                            </div>
+                            <div class="carousel-caption d-md-none d-block">
+                                <p>Armia Zainul Almaraghi: 6 Gol</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="Topskor/Romi.jpg" alt="Romi">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Romi Hurmandi</h2>
+                                <p class="d-none d-sm-block">5 Gol</p>
+                            </div>
+                            <div class="carousel-caption d-md-none d-block">
+                                <p>Romi Hurmandi: 5 Gol</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="Topskor/Pieter.jpg" alt="Pieter">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Pieter Marcheliano</h2>
+                                <p class="d-none d-sm-block">5 Gol</p>
+                            </div>
+                            <div class="carousel-caption d-md-none d-block">
+                                <p>Pieter Marcheliano: 5 gol</p>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel" data-slide-to="1"></li>
+                        <li data-target="#mycarousel" data-slide-to="2"></li>
+                        <li data-target="#mycarousel" data-slide-to="3"></li>
+                        <li data-target="#mycarousel" data-slide-to="4"></li>
+                    </ol>
+                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <p>*Data diambil pada 2 Oktober 2021</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer class="footer" data-aos="fade-up">
+        <div class="container">
+            <div class="row">             
+                <div class="col">
+                    <h5><b>Menu</b></h5>
+                    <ul class="list-unstyled">
+                        <li><a class="nav-link" href="#top" id="footer">Kembali ke atas</a></li>
+                        <li><a class="nav-link" href="#grup" id="footer">Hasil</a></li>
+                        <li><a class="nav-link" href="#medali" id="footer">Medali</a></li>
+                        <li><a class="nav-link" href="#topskor" id="footer">Top Skor</a></li>
+                    </ul>
+                </div>
+                <div class="col ml-auto mr-auto"style="text-align: center;">
+                    <h5><b>Info</b></h5>
+                    <ul class="list-unstyled" >
+                        <li><a class="nav-link" data-toggle="modal" data-target="#tentang"href="" id="footer">Tentang Kami</a></li>
+                        <li><a class="nav-link" data-toggle="modal" data-target="#hubungi"id="footer">Hubungi Kami</a></li>
+                    </ul>
+                    
+                    <h5><b>Official Website</b></h5>
+                    <ul class="list-unstyled" >
+                        <li><a class="nav-link" href="https://ponxx2021papua.com/" id="footer">PON XX 2020</a></li>
+                    </ul>
+                </div>
+                <div class="col ml-auto"style="text-align: right;">
+                    <h5><b>Sosial Media</b></h5>
+                    <ul class="list-unstyled" style="text-align: right;">
+                        <li><a class="nav-link" href="https://www.instagram.com/ponxx2020papua/?hl=en" id="footer">Instagram</a></li>
+                        <li><a class="nav-link" href="https://twitter.com/ponxx2020papua?lang=en" id="footer">Twitter</a></li>
+                    </ul>
+                </div>
+           </div>
+           <div class="row justify-content-center">             
+                <div class="col-auto">
+                    <p>© Copyright 2021 HCI</p>
+                </div>
+           </div>
+        </div>
+    </footer>
+    <script>
+        function validation() {
+            var nama = document.getElementById("nama").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("komentar").value;
+            if (nama != "" && email!="" && message !="") {
+                alert("Terima kasih "+nama+" atas feedbacknya.");
+            }else{
+                alert('Datanya belum lengkap :(');
+            }
+        }
+        function search(string){
+            window.find(string);
+        }
+        function cari(string){
+            window.find(string);
+        }
+    </script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+

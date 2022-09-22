@@ -1,0 +1,41 @@
+html {
+  scroll-behavior: smooth;
+}
+
+#lcard {
+  color: rgb(23, 29, 90);
+}
+#lcard:hover {
+  background-color: rgb(81, 129, 202);
+  color: white;
+  text-decoration: none;
+}
+#TableMedali {
+  text-align: center;
+}
+.footer {
+  background-color: rgb(23, 29, 90);
+  color: white;
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+}
+#footer {
+  background-color: rgb(23, 29, 90);
+  color: blanchedalmond;
+}
+#footer:hover {
+  background-color: rgb(255, 244, 228);
+  color: #222831;
+}
+.carousel-caption {
+  text-shadow: -2px 0 black, 0 2px black, 0px 0 black, 0 -2px black;
+}
+.anchor {
+  display: block;
+  height: 150px; /*same height as header*/
+  margin-top: -150px; /*same height as header*/
+  visibility: hidden;
+}
+/* #jmedal{
+    background-color: rgb(128, 160, 230);;
+} */
